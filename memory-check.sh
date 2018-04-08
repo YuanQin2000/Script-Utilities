@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# See the file LICENSE for redistribution information.
+#
+# Author: yuanqin2000 AT outlook DOT com
+#
+
 
 function check_status_file()
 {
@@ -39,6 +45,10 @@ function check_memory()
     do
         check_status_file $status_file $log_file
         sleep 4
+        if [ ! -f $status_file ]; then
+            echo "Process $1 doesn't exist"
+            return
+        fi
     done
 }
 
